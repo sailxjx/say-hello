@@ -1,0 +1,28 @@
+#!/bin/bash
+SOURCE_DIR='.'
+COFFEE_CMD="${SOURCE_DIR}/bin/coffee"
+FOREVER_LOG_PATH="${SOURCE_DIR}/tmp/forever"
+FOREVER_LOG_FILE="${FOREVER_LOG_PATH}/say.log"
+FOREVER_ERROR_FILE="${FOREVER_LOG_PATH}/say_err.log"
+FOREVER_LAUNCHER="${SOURCE_DIR}/bin/forever"
+
+mkdir -p $FOREVER_LOG_PATH
+
+case $1 in
+    start)
+        $FOREVER_LAUNCHER -o $FOREVER_LOG_FILE -e $FOREVER_ERROR_FILE -a start -c ${COFFEE_CMD} say.coffee
+        ;;
+    restart)
+        $FOREVER_LAUNCHER -o $FOREVER_LOG_FILE -e $FOREVER_ERROR_FILE -a restart -c ${COFFEE_CMD} say.coffee
+        ;;
+    stop)
+        $FOREVER_LAUNCHER stop say.coffee
+        ;;
+    list)
+        $FOREVER_LAUNCHER list
+        ;;
+    *)
+        echo 'bye'
+        exit 1
+        ;;
+esac

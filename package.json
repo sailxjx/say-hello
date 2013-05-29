@@ -1,0 +1,17 @@
+{
+    "name": "say-hello",
+    "description": "An live chat plugin for any website",
+    "version": "0.0.1",
+    "private": false,
+    "dependencies": {
+        "express": "3.x",
+        "coffee-script": "1.6.x",
+        "cookie": "*",
+        "socket.io": "0.9.x",
+        "redis": "*",
+        "hiredis": "*",
+        "async": "0.2.x",
+        "forever": "0.10.x",
+        "mysql": "2.x"
+    }
+}
